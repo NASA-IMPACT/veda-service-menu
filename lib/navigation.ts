@@ -46,6 +46,11 @@ export const pages: PageInfo[] = [
     icon: '☁️',
   },
   {
+    path: '/services/algorithm-development',
+    title: 'Algorithm Development & Data Integration',
+    icon: '🧬',
+  },
+  {
     path: '/services/access-management',
     title: 'Access Management',
     icon: '🔐',

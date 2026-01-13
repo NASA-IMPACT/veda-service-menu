@@ -41,7 +41,7 @@ export default function ServiceDetailPage({
       </div>
 
       {/* Content Area */}
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1">
         {content ? (
           content
         ) : (
