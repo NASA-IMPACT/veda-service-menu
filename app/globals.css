@@ -58,13 +58,16 @@ body {
   border-radius: 8px;
   border: 2px solid var(--page-border);
   transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Book spread layout */
 .book-spread {
   display: flex;
   position: relative;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   transform-style: preserve-3d;
 }
 
