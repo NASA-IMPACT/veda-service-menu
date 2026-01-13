@@ -39,18 +39,18 @@ export default function PersonasPage() {
   return (
     <div className="h-full flex flex-col">
       {/* Header */}
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-[var(--foreground)] mb-3">
+      <div className="text-center mb-4 flex-shrink-0">
+        <h2 className="text-2xl font-bold text-[var(--foreground)] mb-2">
           Who We Serve
         </h2>
-        <p className="text-lg text-gray-700">
+        <p className="text-base text-gray-700 leading-snug">
           VEDA supports a diverse community of users with varying needs and expertise
         </p>
       </div>
 
       {/* Personas Grid */}
-      <div className="flex-1 flex flex-col justify-center">
-        <div className="grid grid-cols-1 gap-6">
+      <div className="flex-1 flex flex-col justify-center min-h-0">
+        <div className="grid grid-cols-1 gap-4">
           {personas.map((persona) => (
             <PersonaCard
               key={persona.name}
@@ -64,8 +64,8 @@ export default function PersonasPage() {
       </div>
 
       {/* Footer */}
-      <div className="mt-8 pt-4 border-t border-[var(--page-border)]">
-        <p className="text-sm text-gray-600 text-center">
+      <div className="mt-4 pt-3 border-t border-[var(--page-border)] flex-shrink-0">
+        <p className="text-xs text-gray-600 text-center leading-snug">
           Click on any persona to learn more about their needs and recommended service bundles
         </p>
       </div>

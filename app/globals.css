@@ -95,12 +95,14 @@ body {
 
 /* Page styling */
 .page {
-  padding: 3rem;
+  padding: 2.5rem;
   height: 100%;
   background: var(--book-bg);
   position: relative;
   flex: 1;
-  overflow-y: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .page-left {
