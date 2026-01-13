@@ -80,7 +80,7 @@ veda-service-menu/
 │       ├── HomePage.tsx
 │       └── ServicePage.tsx
 ├── public/                  # Static assets
-└── amplify.yml             # AWS Amplify configuration
+└── netlify.toml            # Netlify deployment configuration
 ```
 
 ## Customization
