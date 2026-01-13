@@ -14,7 +14,23 @@ frontend:
         - echo '{"deploy":"static"}' > out/required-server-files.json
         - touch out/.next/server/pages-manifest.json
         - echo '{}' > out/.next/server/middleware-manifest.json
-        - find out -name "*.html" | while read f; do touch "${f%.html}.js"; done
+        - |
+          cd out
+          find . -name "*.html" -type f | while read htmlfile; do
+            relpath="${htmlfile%.html}"
+            relpath="${relpath#./}"
+
+            if [ "$relpath" = "index" ] || [ -z "$relpath" ]; then
+              jsfile=".next/server/pages/index.js"
+            else
+              jsfile=".next/server/pages/${relpath}.js"
+            fi
+
+            mkdir -p "$(dirname "$jsfile")"
+            touch "$jsfile"
+            echo '{"version":1,"files":[]}' > "${jsfile}.nft.json"
+          done
+          cd ..
   artifacts:
     baseDirectory: out
     files:
