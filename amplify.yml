@@ -7,11 +7,14 @@ frontend:
     build:
       commands:
         - npm run build
-        - mkdir -p out/.next
-        - echo '{"version":3,"routes":{"none":[]}}' > out/.next/routes-manifest.json
-        - echo '[]' > out/.next/prerender-manifest.json
         - mkdir -p out/.next/server/pages
+        - mkdir -p out/.next/server/app
+        - echo '{"version":3,"routes":{"none":[]}}' > out/.next/routes-manifest.json
+        - echo '{"version":4,"pages":{},"dynamicRoutes":{}}' > out/.next/prerender-manifest.json
         - echo '{"deploy":"static"}' > out/required-server-files.json
+        - touch out/.next/server/pages-manifest.json
+        - echo '{}' > out/.next/server/middleware-manifest.json
+        - find out -name "*.html" | while read f; do touch "${f%.html}.js"; done
   artifacts:
     baseDirectory: out
     files:
