@@ -1,5 +1,9 @@
 # VEDA Service Menu
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/YOUR-SITE-ID/deploy-status)](https://app.netlify.com/sites/YOUR-SITE-NAME/deploys)
+
+**🚀 Live Demo:** [https://YOUR-SITE-NAME.netlify.app](https://YOUR-SITE-NAME.netlify.app)
+
 A book/menu-styled interactive application showcasing VEDA (Visualization, Exploration, and Data Analysis) services and user personas.
 
 ## Features
@@ -103,11 +107,19 @@ Edit CSS variables in `app/globals.css`:
 
 ## Deployment
 
-### AWS Amplify
+### Netlify (Recommended)
 
-The application is configured for AWS Amplify deployment with `amplify.yml`. Simply connect your repository to Amplify and it will automatically build and deploy.
+The application is deployed on Netlify with automatic deployments on every push to `main`.
 
-### Static Export
+**Live Site:** [https://YOUR-SITE-NAME.netlify.app](https://YOUR-SITE-NAME.netlify.app)
+
+The `netlify.toml` configuration handles:
+- Automatic builds with `npm run build`
+- Static file serving from `out/` directory
+- Client-side routing for SPA navigation
+- Asset optimization (CSS, JS, images)
+
+### Manual Static Export
 
 The app is configured to export as static files:
 
@@ -115,7 +127,7 @@ The app is configured to export as static files:
 npm run build
 ```
 
-The output will be in the `out/` directory, ready for hosting on any static site platform.
+The output will be in the `out/` directory, ready for hosting on any static site platform (Vercel, GitHub Pages, S3, etc.).
 
 ## Embedding in Quarto
 
