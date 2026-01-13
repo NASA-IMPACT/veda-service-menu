@@ -11,7 +11,7 @@ frontend:
         - mkdir -p .next/server/app
         - echo '{"version":3,"routes":{"none":[]}}' > .next/routes-manifest.json
         - echo '{"version":4,"pages":{},"dynamicRoutes":{}}' > .next/prerender-manifest.json
-        - echo '{"deploy":"static"}' > required-server-files.json
+        - echo '{"deploy":"static"}' > out/required-server-files.json
         - touch .next/server/pages-manifest.json
         - echo '{}' > .next/server/middleware-manifest.json
         - |
