@@ -37,6 +37,11 @@ export default function DataDanaPage() {
               link: '/services/data-services',
             },
             {
+              category: 'Algorithm Development & Data Integration',
+              services: ['Version-controlled environments', 'Data harmonization', 'Multi-mission integration'],
+              link: '/services/algorithm-development',
+            },
+            {
               category: 'Cloud Computing',
               services: ['JupyterHub deployment', 'Scalable storage/memory', 'Library dependency resolution'],
               link: '/services/cloud-computing',

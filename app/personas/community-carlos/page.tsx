@@ -37,6 +37,11 @@ export default function CommunityCarlosPage() {
               link: '/services/cloud-computing',
             },
             {
+              category: 'Algorithm Development & Data Integration',
+              services: ['Version-controlled algorithm development', 'Collaborative algorithm sharing'],
+              link: '/services/algorithm-development',
+            },
+            {
               category: 'Content Curation',
               services: ['Tutorial Jupyter Notebooks', 'GitHub Pages documentation'],
               link: '/services/content-curation',

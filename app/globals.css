@@ -61,7 +61,7 @@ body {
 .book-spread {
   display: flex;
   position: relative;
-  min-height: 700px;
+  min-height: 1100px;
   transform-style: preserve-3d;
 }
 
@@ -90,7 +90,7 @@ body {
 /* Page styling */
 .page {
   padding: 3rem;
-  min-height: 700px;
+  min-height: 1100px;
   background: var(--book-bg);
   position: relative;
   flex: 1;

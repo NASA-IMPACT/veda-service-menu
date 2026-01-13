@@ -34,9 +34,9 @@ export default function PersonaProfilePage({
       </div>
 
       {/* Persona Header */}
-      <div className="text-center mb-6 pb-4 border-b-2 border-[var(--page-border)]">
-        <div className="text-6xl mb-3">{icon}</div>
-        <h1 className="text-3xl font-bold text-[var(--foreground)] mb-2">
+      <div className="text-center mb-8 pb-6 border-b-2 border-[var(--page-border)]">
+        <div className="text-6xl mb-4">{icon}</div>
+        <h1 className="text-4xl font-bold text-[var(--foreground)] mb-3">
           {name}
         </h1>
         <p className="text-lg text-[var(--accent)] italic">{subtitle}</p>
@@ -45,13 +45,13 @@ export default function PersonaProfilePage({
       {/* Role */}
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-[var(--foreground)] mb-2">Role</h2>
-        <p className="text-gray-700">{role}</p>
+        <p className="text-gray-700 text-lg leading-relaxed">{role}</p>
       </div>
 
       {/* Description */}
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-[var(--foreground)] mb-2">Description</h2>
-        <p className="text-gray-700 leading-relaxed">{description}</p>
+        <p className="text-gray-700 text-lg leading-relaxed">{description}</p>
       </div>
 
       {/* Key Needs */}
@@ -61,7 +61,7 @@ export default function PersonaProfilePage({
           {keyNeeds.map((need, index) => (
             <li key={index} className="flex items-start">
               <span className="text-[var(--button-primary)] mr-2">✓</span>
-              <span className="text-gray-700">{need}</span>
+              <span className="text-gray-700 text-base">{need}</span>
             </li>
           ))}
         </ul>
@@ -74,7 +74,7 @@ export default function PersonaProfilePage({
           {painPoints.map((point, index) => (
             <li key={index} className="flex items-start">
               <span className="text-red-500 mr-2">✗</span>
-              <span className="text-gray-700">{point}</span>
+              <span className="text-gray-700 text-base">{point}</span>
             </li>
           ))}
         </ul>

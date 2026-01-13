@@ -20,11 +20,11 @@ export default function PersonaBundlePage({
   return (
     <div className="h-full flex flex-col">
       {/* Bundle Header */}
-      <div className="mb-6 pb-4 border-b-2 border-[var(--page-border)]">
-        <h2 className="text-2xl font-bold text-[var(--foreground)] mb-2">
+      <div className="mb-8 pb-6 border-b-2 border-[var(--page-border)]">
+        <h2 className="text-4xl font-bold text-[var(--foreground)] mb-3">
           {bundleName}
         </h2>
-        <p className="text-gray-700 leading-relaxed">{bundleDescription}</p>
+        <p className="text-gray-700 text-lg leading-relaxed">{bundleDescription}</p>
       </div>
 
       {/* Core Services */}

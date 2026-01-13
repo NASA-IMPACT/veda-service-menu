@@ -37,6 +37,11 @@ export default function InfrastructureIanPage() {
               link: '/services/cloud-infrastructure',
             },
             {
+              category: 'Algorithm Development & Data Integration',
+              services: ['Scientific workflow orchestration', 'Version-controlled environments'],
+              link: '/services/algorithm-development',
+            },
+            {
               category: 'Cloud Computing',
               services: ['Infrastructure monitoring', 'Grafana cost management'],
               link: '/services/cloud-computing',

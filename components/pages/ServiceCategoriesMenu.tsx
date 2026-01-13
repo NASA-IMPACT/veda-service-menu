@@ -45,6 +45,11 @@ const services: ServiceCategory[] = [
     icon: '☁️',
   },
   {
+    title: 'Algorithm Development & Data Integration',
+    href: '/services/algorithm-development',
+    icon: '🧬',
+  },
+  {
     title: 'Access Management',
     href: '/services/access-management',
     icon: '🔐',

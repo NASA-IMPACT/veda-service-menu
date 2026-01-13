@@ -37,6 +37,11 @@ export default function PublisherPetePage() {
               link: '/services/data-services',
             },
             {
+              category: 'Algorithm Development & Data Integration',
+              services: ['Data harmonization & standardization', 'Workflow orchestration'],
+              link: '/services/algorithm-development',
+            },
+            {
               category: 'Content Curation',
               services: ['Dataset documentation', 'Quality reports', 'Automation pipelines'],
               link: '/services/content-curation',
