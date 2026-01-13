@@ -7,13 +7,13 @@ frontend:
     build:
       commands:
         - npm run build
-        - mkdir -p .next/server/pages
-        - mkdir -p .next/server/app
-        - echo '{"version":3,"routes":{"none":[]}}' > .next/routes-manifest.json
-        - echo '{"version":4,"pages":{},"dynamicRoutes":{}}' > .next/prerender-manifest.json
+        - mkdir -p out/.next/server/pages
+        - mkdir -p out/.next/server/app
+        - echo '{"version":3,"routes":{"none":[]}}' > out/.next/routes-manifest.json
+        - echo '{"version":4,"pages":{},"dynamicRoutes":{}}' > out/.next/prerender-manifest.json
         - echo '{"deploy":"static"}' > out/required-server-files.json
-        - touch .next/server/pages-manifest.json
-        - echo '{}' > .next/server/middleware-manifest.json
+        - touch out/.next/server/pages-manifest.json
+        - echo '{}' > out/.next/server/middleware-manifest.json
         - |
           cd out
           find . -name "*.html" -type f | while read htmlfile; do
@@ -21,9 +21,9 @@ frontend:
             relpath="${relpath#./}"
 
             if [ "$relpath" = "index" ] || [ -z "$relpath" ]; then
-              jsfile="../.next/server/pages/index.js"
+              jsfile=".next/server/pages/index.js"
             else
-              jsfile="../.next/server/pages/${relpath}.js"
+              jsfile=".next/server/pages/${relpath}.js"
             fi
 
             mkdir -p "$(dirname "$jsfile")"
