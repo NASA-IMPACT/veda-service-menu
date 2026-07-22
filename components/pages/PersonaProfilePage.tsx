@@ -1,11 +1,11 @@
-'use client';
-
-import Link from 'next/link';
+import { Check, X } from "lucide-react";
+import IconBadge from "@/components/ui/IconBadge";
+import { personaIcons } from "@/lib/icons";
 
 interface PersonaProfilePageProps {
   name: string;
   subtitle: string;
-  icon: string;
+  slug: string;
   role: string;
   description: string;
   keyNeeds: string[];
@@ -15,70 +15,67 @@ interface PersonaProfilePageProps {
 export default function PersonaProfilePage({
   name,
   subtitle,
-  icon,
+  slug,
   role,
   description,
   keyNeeds,
   painPoints,
 }: PersonaProfilePageProps) {
+  const Icon = personaIcons[slug];
+
   return (
-    <div className="h-full flex flex-col">
-      {/* Back button */}
-      <div className="mb-6">
-        <Link
-          href="/"
-          className="inline-flex items-center text-[var(--button-primary)] hover:text-[var(--button-hover)] transition-colors font-semibold"
-        >
-          ← Return to Home Page
-        </Link>
+    <section aria-labelledby="persona-profile-heading">
+      <div className="flex items-start gap-5">
+        {Icon ? <IconBadge icon={Icon} size="lg" tone="accent" /> : null}
+        <div>
+          <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-accent">
+            User Persona
+          </p>
+          <h1 id="persona-profile-heading" className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+            {name}
+          </h1>
+          <p className="mt-1 text-lg text-foreground-muted">{subtitle}</p>
+        </div>
       </div>
 
-      {/* Persona Header */}
-      <div className="text-center mb-8 pb-6 border-b-2 border-[var(--page-border)]">
-        <div className="text-6xl mb-4">{icon}</div>
-        <h1 className="text-4xl font-bold text-[var(--foreground)] mb-3">
-          {name}
-        </h1>
-        <p className="text-lg text-[var(--accent)] italic">{subtitle}</p>
-      </div>
+      <dl className="mt-8 space-y-6">
+        <div>
+          <dt className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-foreground-subtle">
+            Role
+          </dt>
+          <dd className="mt-1.5 text-lg text-foreground-muted">{role}</dd>
+        </div>
+        <div>
+          <dt className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-foreground-subtle">
+            About
+          </dt>
+          <dd className="mt-1.5 leading-relaxed text-foreground-muted">{description}</dd>
+        </div>
+      </dl>
 
-      {/* Role */}
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold text-[var(--foreground)] mb-2">Role</h2>
-        <p className="text-gray-700 text-lg leading-relaxed">{role}</p>
-      </div>
-
-      {/* Description */}
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold text-[var(--foreground)] mb-2">Description</h2>
-        <p className="text-gray-700 text-lg leading-relaxed">{description}</p>
-      </div>
-
-      {/* Key Needs */}
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold text-[var(--foreground)] mb-3">Key Needs</h2>
-        <ul className="space-y-2">
-          {keyNeeds.map((need, index) => (
-            <li key={index} className="flex items-start">
-              <span className="text-[var(--button-primary)] mr-2">✓</span>
-              <span className="text-gray-700 text-base">{need}</span>
+      <div className="mt-8">
+        <h2 className="text-lg font-semibold text-foreground">Key needs</h2>
+        <ul className="mt-3 space-y-2.5">
+          {keyNeeds.map((need) => (
+            <li key={need} className="flex items-start gap-3">
+              <Check size={18} aria-hidden="true" className="mt-0.5 flex-shrink-0 text-success" />
+              <span className="text-foreground-muted">{need}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Pain Points */}
-      <div>
-        <h2 className="text-xl font-semibold text-[var(--foreground)] mb-3">Pain Points</h2>
-        <ul className="space-y-2">
-          {painPoints.map((point, index) => (
-            <li key={index} className="flex items-start">
-              <span className="text-red-500 mr-2">✗</span>
-              <span className="text-gray-700 text-base">{point}</span>
+      <div className="mt-8">
+        <h2 className="text-lg font-semibold text-foreground">Pain points</h2>
+        <ul className="mt-3 space-y-2.5">
+          {painPoints.map((point) => (
+            <li key={point} className="flex items-start gap-3">
+              <X size={18} aria-hidden="true" className="mt-0.5 flex-shrink-0 text-danger" />
+              <span className="text-foreground-muted">{point}</span>
             </li>
           ))}
         </ul>
       </div>
-    </div>
+    </section>
   );
 }
