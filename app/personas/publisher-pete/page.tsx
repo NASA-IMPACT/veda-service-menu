@@ -1,55 +1,59 @@
-import BookSpread from '@/components/book/BookSpread';
-import PersonaProfilePage from '@/components/pages/PersonaProfilePage';
-import PersonaBundlePage from '@/components/pages/PersonaBundlePage';
+import type { Metadata } from "next";
+import PersonaDetail from "@/components/pages/PersonaDetail";
+import PersonaProfilePage from "@/components/pages/PersonaProfilePage";
+import PersonaBundlePage from "@/components/pages/PersonaBundlePage";
+
+export const metadata: Metadata = { title: "Publisher Pete" };
 
 export default function PublisherPetePage() {
   return (
-    <BookSpread
-      leftPage={
+    <PersonaDetail
+      name="Publisher Pete"
+      profile={
         <PersonaProfilePage
           name="Publisher Pete"
           subtitle="The Mission-Driven Program Manager"
-          icon="📊"
+          slug="publisher-pete"
           role="Program Manager / Data Steward"
           description="Publisher Pete manages a portfolio of Earth observation datasets that his agency is mandated to share publicly. He understands data management principles but relies on technical teams for implementation. Pete needs a streamlined pathway to transform archival data into modern, discoverable formats."
           keyNeeds={[
-            'Data transformation services to convert legacy formats to cloud-optimized standards',
-            'STAC catalog ingestion and reliable AWS S3 hosting',
-            'Content curation support including data quality reports',
-            'Automated pipelines to update datasets when new versions release',
-            'Data recovery capabilities for business continuity',
+            "Data transformation services to convert legacy formats to cloud-optimized standards",
+            "STAC catalog ingestion and reliable AWS S3 hosting",
+            "Content curation support including data quality reports",
+            "Automated pipelines to update datasets when new versions release",
+            "Data recovery capabilities for business continuity",
           ]}
           painPoints={[
-            'Complex procurement processes to acquire technical services',
-            'Lack of in-house expertise for cloud data infrastructure',
-            'Pressure to demonstrate public value of agency data investments',
+            "Complex procurement processes to acquire technical services",
+            "Lack of in-house expertise for cloud data infrastructure",
+            "Pressure to demonstrate public value of agency data investments",
           ]}
         />
       }
-      rightPage={
+      bundle={
         <PersonaBundlePage
           bundleName="Data Publishing Suite"
           bundleDescription="Provides end-to-end support for agencies needing to transform archival data into discoverable, cloud-hosted public resources. Handles the technical complexity of format conversion, catalog management, and ongoing maintenance."
           coreServices={[
             {
-              category: 'Data Services',
-              services: ['Conversion to COG, Zarr', 'STAC catalog creation', 'AWS S3 storage', 'Data recovery'],
-              link: '/services/data-services',
+              category: "Data Services",
+              services: ["Conversion to COG, Zarr", "STAC catalog creation", "AWS S3 storage", "Data recovery"],
+              link: "/services/data-services",
             },
             {
-              category: 'Algorithm Development & Data Integration',
-              services: ['Data harmonization & standardization', 'Workflow orchestration'],
-              link: '/services/algorithm-development',
+              category: "Algorithm Development & Data Integration",
+              services: ["Data harmonization & standardization", "Workflow orchestration"],
+              link: "/services/algorithm-development",
             },
             {
-              category: 'Content Curation',
-              services: ['Dataset documentation', 'Quality reports', 'Automation pipelines'],
-              link: '/services/content-curation',
+              category: "Content Curation",
+              services: ["Dataset documentation", "Quality reports", "Automation pipelines"],
+              link: "/services/content-curation",
             },
             {
-              category: 'Cloud Infrastructure',
-              services: ['Hosting infrastructure', 'Automated updates'],
-              link: '/services/cloud-infrastructure',
+              category: "Cloud Infrastructure",
+              services: ["Hosting infrastructure", "Automated updates"],
+              link: "/services/cloud-infrastructure",
             },
           ]}
         />

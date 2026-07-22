@@ -2,16 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * VEDA Service Menu — design tokens
+ * Aligned to NASA's Horizon Design System (HDS): clear hierarchy, cool-gray
+ * neutrals, an authoritative NASA blue anchored to the official VEDA logo
+ * (#0066B3), a restrained VEDA-orange accent, and WCAG AA / Section 508
+ * contrast throughout.
+ */
 :root {
-  /* Theme colors */
-  --background: #f5f1e8;
-  --foreground: #2c2416;
-  --book-bg: #faf7f0;
-  --book-shadow: rgba(0, 0, 0, 0.3);
-  --page-border: #d4c5a9;
-  --button-primary: #4a7c9e;
-  --button-hover: #3a6c8e;
-  --accent: #8b6f47;
+  /* Surfaces */
+  --surface: #ffffff;
+  --background: #f4f6f8;
+  --surface-muted: #eef2f6;
+
+  /* Text */
+  --foreground: #12233b;
+  --foreground-muted: #4a5a6a;
+  --foreground-subtle: #6b7a89;
+
+  /* Borders */
+  --border: #dbe3ea;
+  --border-strong: #b9c6d2;
+
+  /* Brand — NASA blue (matches the VEDA logo) */
+  --primary: #0066b3;
+  --primary-hover: #00538f;
+  --primary-contrast: #ffffff;
+  --primary-soft: #e6f0f9;
+
+  /* Accents */
+  --accent: #d04200; /* VEDA orange */
+  --accent-hover: #a83500;
+  --danger: #d4351c; /* pain points / destructive */
+  --success: #1a7f37; /* key needs / affirmative */
+
+  /* Focus */
+  --focus-ring: #1a7fdb;
+
+  /* Neutral gray ramp */
+  --gray-50: #f4f6f8;
+  --gray-100: #e9edf1;
+  --gray-200: #dbe3ea;
+  --gray-300: #b9c6d2;
+  --gray-500: #6b7a89;
+  --gray-700: #46525d;
+  --gray-900: #12233b;
+
+  /* Radii & elevation */
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --shadow-sm: 0 1px 2px rgba(16, 32, 48, 0.06), 0 1px 3px rgba(16, 32, 48, 0.08);
+  --shadow-md: 0 2px 6px rgba(16, 32, 48, 0.06), 0 6px 16px rgba(16, 32, 48, 0.08);
+
+  /* Font families (populated by next/font variables in layout.tsx) */
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
 * {
@@ -20,224 +66,64 @@
   margin: 0;
 }
 
-html,
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  font-family: 'Georgia', 'Times New Roman', serif;
+  min-height: 100dvh;
   background-color: var(--background);
   color: var(--foreground);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  color: var(--foreground);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
 }
 
-/* Book styling */
-.book-container {
-  perspective: 3000px;
-  width: calc(100vw - 4rem);
-  max-width: 1800px;
-  height: calc(100vh - 4rem);
-  margin: 0;
+/* Accessible, high-visibility focus ring */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 3px;
 }
 
-.book {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: var(--book-bg);
-  box-shadow:
-    0 10px 50px var(--book-shadow),
-    inset 0 0 20px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  border: 2px solid var(--page-border);
-  transform-style: preserve-3d;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Book spread layout */
-.book-spread {
-  display: flex;
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  transform-style: preserve-3d;
-}
-
-/* Book spine/binding */
-.book-spine {
+/* Skip-to-content link (visible only when focused) */
+.skip-link {
   position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 20px;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.05),
-    rgba(0, 0, 0, 0.1)
-  );
-  box-shadow:
-    inset 0 0 10px rgba(0, 0, 0, 0.2),
-    2px 0 5px rgba(0, 0, 0, 0.1),
-    -2px 0 5px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  pointer-events: none;
+  left: 1rem;
+  top: -3rem;
+  z-index: 100;
+  padding: 0.625rem 1rem;
+  background: var(--primary);
+  color: var(--primary-contrast);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: top 0.15s ease-in-out;
 }
 
-/* Page styling */
-.page {
-  padding: 2.5rem;
-  height: 100%;
-  background: var(--book-bg);
-  position: relative;
-  flex: 1;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+.skip-link:focus {
+  top: 1rem;
 }
 
-.page-left {
-  border-right: 1px solid var(--page-border);
-  padding-right: calc(3rem + 10px);
-}
-
-.page-right {
-  border-left: 1px solid var(--page-border);
-  padding-left: calc(3rem + 10px);
-  transform-style: preserve-3d;
-  transform-origin: left center;
-  transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-  position: relative;
-}
-
-/* 3D Page flip */
-.page-right.flipping {
-  transform: rotateY(-180deg);
-}
-
-/* Flip container for double-sided page */
-.flip-container {
-  position: relative;
-  transform-style: preserve-3d;
-  width: 100%;
-  height: 100%;
-}
-
-.flip-front,
-.flip-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-.flip-back {
-  transform: rotateY(180deg);
-}
-
-/* Page texture */
-.page::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.02) 2px,
-      rgba(0, 0, 0, 0.02) 3px
-    );
-  pointer-events: none;
-  opacity: 0.3;
-}
-
-/* Page flip animation */
-@keyframes pageFlip {
-  0% {
-    transform: rotateY(0deg);
-    box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.2);
-  }
-  50% {
-    transform: rotateY(-90deg);
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-  }
-  100% {
-    transform: rotateY(-180deg);
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
-  }
-}
-
-.page-flip-animation {
-  animation: pageFlip 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-/* Page shadow during flip */
-.page-right::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent 30%);
-  opacity: 0;
-  transition: opacity 0.8s;
-  pointer-events: none;
-}
-
-.page-right.flipping::after {
-  opacity: 1;
-}
-
-/* Responsive design */
-@media (max-width: 1024px) {
-  .book-spread {
-    flex-direction: column;
-    overflow-y: auto;
-  }
-
-  .page-left,
-  .page-right {
-    border: none;
-    padding: 2rem 1.5rem;
-    height: auto;
-    min-height: 50vh;
-  }
-
-  .book-spine {
-    display: none;
-  }
-
-  .page-right {
-    transform-origin: top center;
-  }
-
-  .page-right.flipping {
-    transform: rotateX(-180deg);
-  }
-}
-
-@media (max-width: 768px) {
-  .book-container {
-    width: calc(100vw - 2rem);
-    height: calc(100vh - 2rem);
-  }
-
-  .page {
-    padding: 1.5rem;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -4,15 +4,15 @@
 
 **🚀 Live Demo:** [https://YOUR-SITE-NAME.netlify.app](https://YOUR-SITE-NAME.netlify.app)
 
-A book/menu-styled interactive application showcasing VEDA (Visualization, Exploration, and Data Analysis) services and user personas.
+An interactive application showcasing VEDA (Visualization, Exploration, and Data Analysis) services and user personas, styled to follow NASA's Horizon Design System (HDS).
 
 ## Features
 
-- 📖 **Book-style Interface**: Beautiful, interactive two-page spread with realistic book design
-- 🔄 **3D Page Flip Animation**: Smooth 3D perspective page turns when navigating
-- 📑 **Sequential Navigation**: Forward/backward buttons to browse through all pages like a real book
-- 🎯 **Static Menu Page**: Service categories always visible on the left for easy navigation
-- 🎨 **Customizable Theme**: CSS variable-based theming system for easy customization
+- 🛰️ **NASA Horizon Design System**: Clean, professional styling with Inter / Public Sans / DM Mono typography and a NASA-blue design-token palette
+- 🎨 **Design tokens**: CSS custom properties + Tailwind theme for consistent color, spacing, radius, and elevation
+- 🧭 **App shell**: Sticky header with the official NASA VEDA logo, breadcrumb + prev/next navigation, and a footer of related VEDA/ODSI/Development Seed links
+- 🖼️ **Consistent iconography**: `lucide-react` line icons throughout (no emoji)
+- ♿ **Accessible**: Semantic landmarks, skip link, visible focus states, AA contrast, and reduced-motion support
 - 📱 **Responsive Design**: Works seamlessly across desktop, tablet, and mobile devices
 - 🔗 **Embeddable**: Designed to be embedded in Quarto GitHub pages
 - ⚡ **Static Export**: Built with Next.js static export for easy deployment
@@ -66,20 +66,17 @@ Visit [http://localhost:3000](http://localhost:3000) to view the application.
 ```
 veda-service-menu/
 ├── app/                      # Next.js app directory
-│   ├── globals.css          # Global styles and theme variables
-│   ├── layout.tsx           # Root layout
-│   ├── page.tsx             # Home page
-│   └── services/            # Service category pages
+│   ├── globals.css          # HDS design tokens and base styles
+│   ├── layout.tsx           # Root layout (fonts + header/footer shell)
+│   ├── page.tsx             # Home page (hero + grids + resources)
+│   ├── services/            # Service category pages (9)
+│   └── personas/            # User persona pages (5)
 ├── components/
-│   ├── book/                # Book UI components
-│   │   ├── Book.tsx
-│   │   ├── Page.tsx
-│   │   ├── ServiceButton.tsx
-│   │   └── PersonaCard.tsx
-│   └── pages/               # Page components
-│       ├── HomePage.tsx
-│       └── ServicePage.tsx
-├── public/                  # Static assets
+│   ├── layout/              # SiteHeader, SiteFooter, VedaLogo, PrevNextNav
+│   ├── ui/                  # Primitives: Container, Card, Button, Badge, SectionHeading, IconBadge
+│   └── pages/               # ServiceGrid, PersonaGrid, ServiceDetailPage, PersonaDetail, ...
+├── lib/                     # navigation, icons, links, cn helpers
+├── public/                  # Static assets (veda-logo.svg)
 └── netlify.toml            # Netlify deployment configuration
 ```
 
@@ -87,15 +84,15 @@ veda-service-menu/
 
 ### Theme Colors
 
-Edit CSS variables in `app/globals.css`:
+Edit the design tokens in `app/globals.css`:
 
 ```css
 :root {
-  --background: #f5f1e8;
-  --foreground: #2c2416;
-  --book-bg: #faf7f0;
-  --button-primary: #4a7c9e;
-  --accent: #8b6f47;
+  --background: #f4f6f8;
+  --foreground: #12233b;
+  --surface: #ffffff;
+  --primary: #0066b3;      /* NASA blue (matches the VEDA logo) */
+  --accent: #d04200;       /* VEDA orange */
 }
 ```
 
